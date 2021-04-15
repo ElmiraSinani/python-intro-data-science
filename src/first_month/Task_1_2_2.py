@@ -15,6 +15,9 @@ for x in list2:
 
 print("#2: ", max)
 
+list2.sort()
+print("#2-1: ", list2[-1])
+
 #3. Write a Python program to generate and print a list except for the first 5 elements,
 #   where the values are square of numbers between 1 and 30 (both included)
 i = 0;

@@ -8,7 +8,13 @@ print("#2 ", lst.count(5))
 
 # 3. Write a Python program to remove the second element from a given list,
 # if we know that the first elements index with that value is n.
-list2 = [0, 2, 5, 1, 0, 8, 9, 3, 0]
-getIndex = list2.index(0)
-list2.pop(getIndex+1)
-print("#3 ", list2)
+list2 = [5, 4, 'A', 3, 4, 5, 6, 'A', 7, 2, 8, 1, 9, 2, 10, 2, 11]
+print(list2)
+# firstIndexA = 2
+firstIndexA = list2.index('A')
+slicedList = list2[firstIndexA+1:]
+elmCount = len(list2[:firstIndexA+1])
+secondIndexA = slicedList.index('A')
+list2.pop(secondIndexA+elmCount)
+print(list2)
+

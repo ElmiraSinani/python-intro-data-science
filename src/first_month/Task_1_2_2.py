@@ -18,6 +18,10 @@ print("#2: ", max)
 list2.sort()
 print("#2-1: ", list2[-1])
 
+
+# print maximum element
+print("Largest element is:", max(list1))
+
 #3. Write a Python program to generate and print a list except for the first 5 elements,
 #   where the values are square of numbers between 1 and 30 (both included)
 i = 0;
@@ -29,7 +33,7 @@ while i < 30:
     else:
         newList.append(i ** 2)
 
-print("#3 ", newList)
+print("#3: ", newList)
 
 #4. Write a Python program to remove duplicates from a list
 list3 = [22,5,5,19,5,37,128,5,7,6]

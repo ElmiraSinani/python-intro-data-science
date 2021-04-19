@@ -34,8 +34,7 @@ def checkPrime(n):
 isPrime = checkPrime(45)
 print("#3. Is Number Prime: ", isPrime)
 
-#4. Write a Python function, which checks if a number is perfect
-# - that is equal to the sum of its proper positive divisors.
+#4. Write a Python function, which checks if a number is perfect - that is equal to the sum of its proper positive divisors.
 def checkPerfect(n):
     sum = 0
     for i in range(1, n):

@@ -31,20 +31,20 @@ def getFibonacciNum(n):
     if n<0:
         return False
     elif (n==1 or n==2):
-        return 1
+        return n-1
     else:
         return getFibonacciNum(n-1) + getFibonacciNum(n-2)
 
-calcFibonacci = getFibonacciNum(9)
+calcFibonacci = getFibonacciNum(5)
 print("#2.1 getFibonacciNum", calcFibonacci)
 
 def getFibonacciNumFor(n):
     f = [0, 1]
     for i in range(2, n + 1):
         f.append(f[i - 1] + f[i - 2])
-    return f[n]
+    return f[n-1]
 
-print("#2.2 getFibonacciNumFor", getFibonacciNumFor(9))
+print("#2.2 getFibonacciNumFor", getFibonacciNumFor(5))
 
 def getFibonacciNumWhile(n):
     f = [0, 1]
@@ -52,9 +52,9 @@ def getFibonacciNumWhile(n):
     while (i <= n):
         f.append(f[i - 1] + f[i - 2])
         i += 1
-    return f[n]
+    return f[n-1]
 
-print("#2.3 getFibonacciNumFor", getFibonacciNumWhile(9))
+print("#2.3 getFibonacciNumFor", getFibonacciNumWhile(5))
 
 
 

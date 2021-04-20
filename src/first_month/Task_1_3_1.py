@@ -1,12 +1,17 @@
 #1. Write a Python function, which gets 2 numbers, and return True if the second number is first number divider, otherwise False.
 def checkDivider(a, b):
+    if (b == 0): return "Zero Division Error."
     if (a % b == 0):
         return True
     else:
         return False
 
-isDivider = checkDivider(21,7)
-print("#1. Is Number Divider: ", isDivider)
+def checkDivider1(a, b):
+    if (b == 0): return "Zero Division Error."
+    return (a % b == 0)
+
+print("#1. Is Number Divider: ", checkDivider(21,7))
+print("#1-1. Is Number Divider: ", checkDivider1(21,0))
 
 #2. Write a Python function, which gets a number, and return True if that number is palindrome, otherwise False
 def checkPalindrome(n):

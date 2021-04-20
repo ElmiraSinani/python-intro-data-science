@@ -33,10 +33,7 @@ print("#2 isLucky ", isLucky(239017) )
 # The coordinates are integers. It receives N remote commands(list with n elements each of them is a command).
 # Each command is one of : up, down, left, right. Upon receiving a correct command, the robot moves one unit in the given direction.
 # If the robot receives an incorrect command, it simply ignores it. Where will the robot be located after following all the commands?
-def getLocation(*args):
-    x = 0
-    y = 0
-    # Iterating over the Python args tuple
+def getLocation(*args, x=0, y=0):
     for i in args:
         if i == 'up':
            x = x + 1
@@ -48,7 +45,7 @@ def getLocation(*args):
             y = y - 1
     return "(x="+str(x)+"; y="+str(y)+")";
 
-print('#3 robot location ', getLocation('up', 'up','up', 'right', 'left'))
+print('#3 robot location ', getLocation('up', 'up','up', 'right', 'left', 1, 1))
 
 
 

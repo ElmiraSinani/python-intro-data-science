@@ -7,17 +7,18 @@ class Money:
         return str(self.amount)+" "+str(self.currency)
 
     def sum(self, obj2):
-        return str(self.amount+obj2.amount)+" "+self.currency
+        return Money(self.amount+obj2.amount, obj2.currency)
 
     def sub(self, obj2):
-        return str(self.amount - obj2.amount) + " " + self.currency
+        return Money(self.amount-obj2.amount, obj2.currency)
 
 
 def main():
-    obj1 = Money(150, 'USD')
-    obj2 = Money(200, 'USD')
-    print(obj1.print_obj())
-    print(obj1.sum(obj2))
-    print(obj2.sub(obj1))
+    obj1 = Money(250, 'USD')
+    obj2 = Money(50, 'USD')
+    print("obj1: ", obj1.print_obj())
+    print("obj2: ", obj2.print_obj())
+    print("obj1+obj2: ", obj1.sum(obj2).print_obj())
+    print("obj1-obj2: ", obj1.sub(obj2).print_obj())
 
 main()

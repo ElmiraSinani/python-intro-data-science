@@ -3,6 +3,7 @@ import random
 randomNum = random.randint(1, 10)
 playerName = input("Please Enter You Name. \n")
 print('Hi '+ playerName+ '. I am Picking a number between 1 and 10. Let\'s see from how many attempts you can guess it.\nYou have only 3 attempts :)')
+
 attempts = 0
 while attempts<3:
     pickedNum = int(input())

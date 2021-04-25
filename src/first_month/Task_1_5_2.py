@@ -7,10 +7,10 @@ class Money:
         return str(self.amount)+" "+str(self.currency)
 
     def sum(self, obj2):
-        return Money(self.amount+obj2.amount, obj2.currency)
+        return Money(self.amount+obj2.amount, self.currency)
 
     def sub(self, obj2):
-        return Money(self.amount-obj2.amount, obj2.currency)
+        return Money(self.amount-obj2.amount, self.currency)
 
 
 def main():

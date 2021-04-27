@@ -67,5 +67,6 @@ print(getNumWordingRepresentation(100)) #one hundred
 print(getNumWordingRepresentation(150)) #one hundred fifty
 print(getNumWordingRepresentation(101789)) #one hundred one thousand seven hundred eighty-nine
 print(getNumWordingRepresentation(100000)) #one hundred thousand
-print(getNumWordingRepresentation(154789)) #one hundred fifty-four thousand seven hundred eighty-nine
+print(getNumWordingRepresentation(990000)) #nine hundred ninety thousand
+print(getNumWordingRepresentation(954789)) #one hundred fifty-four thousand seven hundred eighty-nine
 print(getNumWordingRepresentation(1547890)) #Sorry, max supported number is 999.999

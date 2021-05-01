@@ -16,7 +16,7 @@ class Rational:
             return Rational.gcd(b, a%b)
 
     def __repr__(self):
-        return "nominator: "+str(self.nominator)+"; denominator: "+str(self.denominator)
+        return '{}/{}'.format(self.nominator, self.denominator)
 
     def __add__(self, other):
         x = self.lcm(self. denominator, other.denominator)
@@ -35,6 +35,7 @@ class Rational:
 
     def __div__(self, other):
         x = self.nominator * other.denominator
+        y = self.denominator * other.nominator
         return Rational(x, y)
 
     def __eq__(self, other):
@@ -63,7 +64,7 @@ class Rational:
         return False
 
     def __pow__(self, power, modulo=None):
-        pass
+        return Rational(self.numerator ** power, self.denominator ** power)
 
 
 
@@ -71,11 +72,11 @@ r1 = Rational(5, 8)
 r2 = Rational(3, 2)
 
 #print (Rational.gcd(54,24))
-#print (r2)
+print (r2)
 print ("__add__ ",  r1+r2)
 print ("__sub__ ",  r1-r2)
 print ("__mul__ ",  r1*r2)
 print ("__dev__ ",  r1/r2)
-print ("__eq__ ",  r1==r2)
+
 
 

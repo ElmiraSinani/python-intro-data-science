@@ -12,6 +12,9 @@ class Money:
     def print_obj(self):
         return str(self.amount)+" "+str(self.currency)
 
+    def __str__(self):
+        return str(self.amount) + " " + str(self.currency)
+
     def sum(self, obj2):
         return Money(self.amount+obj2.amount, self.currency)
 
@@ -35,4 +38,4 @@ def main():
     print(obj1.conversion("USD", "AMD"))
     print(obj1.conversion("AMD", "AMD"))
 
-main()
+#main()

@@ -26,16 +26,13 @@ class Money:
         return converted_amount
 
 def main():
-
     obj1 = Money(100, 'USD')
     obj2 = Money(50, 'USD')
     print("obj1: ", obj1.print_obj())
     print("obj2: ", obj2.print_obj())
     print("obj1+obj2: ", obj1.sum(obj2).print_obj())
     print("obj1-obj2: ", obj1.sub(obj2).print_obj())
-
     print(obj1.conversion("RUB", "AMD"))
     print(obj1.conversion("USD", "AMD"))
     print(obj1.conversion("AMD", "AMD"))
-
 #main()

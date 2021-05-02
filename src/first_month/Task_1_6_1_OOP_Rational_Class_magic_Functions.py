@@ -1,5 +1,7 @@
-class Rational:
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
+class Rational:
     def __init__(self, x, y):
         self.nominator = x
         self.denominator = y
@@ -16,7 +18,8 @@ class Rational:
             return Rational.gcd(b, a%b)
 
     def __repr__(self):
-        return '{}/{}'.format(self.nominator, self.denominator)
+        gcd = Rational.gcd(self.nominator, self.denominator)
+        return '{}/{}'.format(self.nominator, self.denominator)+' = {}/{}'.format(self.nominator/gcd, self.denominator/gcd)
 
     def __add__(self, other):
         x = self.lcm(self. denominator, other.denominator)
@@ -39,7 +42,7 @@ class Rational:
         return Rational(x, y)
 
     def __eq__(self, other):
-        if self.nominator/self.denominator == other.nominator/other.denominator:
+        if self.nominator == other.nominator and self.denominator == other.denominator:
             return True
         return False
 
@@ -74,9 +77,35 @@ r2 = Rational(3, 2)
 #print (Rational.gcd(54,24))
 print (r2)
 print ("__add__ ",  r1+r2)
+print ("__eq__ ",  r1==r2)
 print ("__sub__ ",  r1-r2)
 print ("__mul__ ",  r1*r2)
 print ("__dev__ ",  r1/r2)
 
 
 
+
+# Class - Rational
+#
+# Data members -
+# numerator - integer(համարիչ)
+# denumerator - integer(հայտարար)
+#
+# Data Methods
+# Constructor - not only assign values to data member, but also simplify,
+# For example if we have an object obj = Rational(6,8), should create an object with values (3,4). Use GCD algorithm, for simplifying.
+#
+# Ոչ միայն պետք է ուղղակի վերագրի համարիչի և հայտարարի արժեքները, այլ նաև պետք է պարզեցնի այն,
+# օրինակ Rational(6,8) ֊ի դեպքում պետք է սարքի օբյեկտ համապատասխան (3,4) արժեքներով։
+# Պարզեցման համար օգտվել ամենամեծ ընդհանուր բաժանարարի ֆունկցիայից։
+# 	__repr__
+# 	__add__
+# 	__sub__
+# 	__mul__
+# 	__div__
+# 	__eq__
+# 	__gt__
+# 	__gte__
+# 	__lt__
+# 	__lte__
+# 	__pow__

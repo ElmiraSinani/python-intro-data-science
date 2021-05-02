@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 #Write a Python function, which Implements the Euler function.
 #Euler function is return a count of numbers not great than N, which are mutually simple with N.
 #Example  φ(6)=2, as only 1 and 5 from 1,2,3,4,5 are mutually simple with 6. Write a function which returns a count of numbers mutually simple with given N.
@@ -33,7 +37,7 @@ print("#2 isLucky ", isLucky(239017) )
 # The coordinates are integers. It receives N remote commands(list with n elements each of them is a command).
 # Each command is one of : up, down, left, right. Upon receiving a correct command, the robot moves one unit in the given direction.
 # If the robot receives an incorrect command, it simply ignores it. Where will the robot be located after following all the commands?
-def getLocation(*args, x=0, y=0):
+def getLocation(x=0, y=0, *args):
     for i in args:
         if i == 'up':
            x = x + 1
@@ -45,7 +49,7 @@ def getLocation(*args, x=0, y=0):
             y = y - 1
     return "(x="+str(x)+"; y="+str(y)+")";
 
-print('#3 robot location ', getLocation('up', 'up','up', 'right', 'left', 1, 1))
+print('#3 robot location ', getLocation(1, 5, 'up', 'up','up', 'right', 'left'))
 
 
 

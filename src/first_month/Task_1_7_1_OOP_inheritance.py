@@ -6,7 +6,7 @@ class Person:
         self.__surname = surname
         self.__age = age
         self.__gender = gender
-    def __str__(self):
+    def __repr__(self):
         return self.__name+" "+self.__surname+" - "+self.__gender+", "+str(self.__age)+" years old."
 
 class Student(Person):
@@ -16,8 +16,9 @@ class Student(Person):
         self.__faculty=faculty
         self.__course=course
         self.__middle_score=middle_score
-    def __str__(self):
-        str = "Student: " + super().__str__()
+
+    def __repr__(self):
+        str = "Student: " + super().__repr__()
         str += " University: "+self.get_university()+"; Faculty: "+self.get_faculty()+"; "
         str += "Course: "+self.get_course()+"; Mid Score: "+self.get_score()
         return str
@@ -38,8 +39,8 @@ class Teacher(Person):
         self.__discipline = discipline
         self.__experience = experience
         self.__salary = salary
-    def __str__(self):
-        str = "Teacher: "+super().__str__()+" "
+    def __repr__(self):
+        str = "Teacher: "+super().__repr__()+" "
         str += "University: " + self.get_university() + "; Faculty: " + self.get_faculty() + "; "
         str += "Discipline: " + self.get_discipline() + "; Experience: " + self.get_experience() + "; "
         str += "Salary: " + self.get_salary()

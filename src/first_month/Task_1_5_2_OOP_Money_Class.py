@@ -9,16 +9,13 @@ class Money:
         self.amount = amount
         self.currency = currency
 
-    def print_obj(self):
-        return str(self.amount)+" "+str(self.currency)
-
-    def __str__(self):
+    def __repr__(self):
         return str(self.amount) + " " + str(self.currency)
 
-    def sum(self, obj2):
+    def __add__(self, obj2):
         return Money(self.amount+obj2.amount, self.currency)
 
-    def sub(self, obj2):
+    def __sub__(self, obj2):
         return Money(self.amount-obj2.amount, self.currency)
 
     def conversion(self, convert_from, convert_to):
@@ -26,13 +23,13 @@ class Money:
         return converted_amount
 
 def main():
-    obj1 = Money(100, 'USD')
+    obj1 = Money(150, 'USD')
     obj2 = Money(50, 'USD')
-    print("obj1: ", obj1.print_obj())
-    print("obj2: ", obj2.print_obj())
-    print("obj1+obj2: ", obj1.sum(obj2).print_obj())
-    print("obj1-obj2: ", obj1.sub(obj2).print_obj())
+    print("obj1: ", obj1)
+    print("obj2: ", obj2)
+    print("obj1+obj2: ", obj1+obj2)
+    print("obj1-obj2: ", obj1-obj2)
     print(obj1.conversion("RUB", "AMD"))
     print(obj1.conversion("USD", "AMD"))
     print(obj1.conversion("AMD", "AMD"))
-#main()
+main()

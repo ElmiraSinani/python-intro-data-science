@@ -1,60 +1,101 @@
 from Task_1_5_2_OOP_Money_Class import Money
 
+
 class Person:
     def __init__(self, name, surname, age, gender):
         self.__name = name
         self.__surname = surname
         self.__age = age
         self.__gender = gender
+
     def __repr__(self):
         return self.__name+" "+self.__surname+" - "+self.__gender+", "+str(self.__age)+" years old."
+
 
 class Student(Person):
     def __init__(self, name, surname, age, gender, university, faculty, course, middle_score):
         super().__init__(name, surname, age, gender)
-        self.__university=university
-        self.__faculty=faculty
-        self.__course=course
-        self.__middle_score=middle_score
+        self.__university = str(university)
+        self.__faculty = str(faculty)
+        self.__course = str(course)
+        self.__middle_score = str(middle_score)
 
     def __repr__(self):
-        str = "Student: " + super().__repr__()
-        str += " University: "+self.get_university()+"; Faculty: "+self.get_faculty()+"; "
-        str += "Course: "+self.get_course()+"; Mid Score: "+self.get_score()
-        return str
+        s = "Student: " + super().__repr__()
+        s += " University: "+self.__university+"; Faculty: "+self.__faculty+"; "
+        s += "Course: "+self.__course+"; Mid Score: "+self.__middle_score
+        return s
+
     def get_score(self):
-        return str(self.__middle_score)
+        return self.__middle_score
+
+    def set_score(self, val):
+        self.__middle_score = val
+
     def get_course(self):
         return self.__course
+
+    def set_course(self, val):
+        self.__course = val
+
     def get_faculty(self):
         return self.__faculty
+
+    def set_faculty(self, val):
+        self.__faculty = val
+
     def get_university(self):
         return self.__university
+
+    def set_university(self, val):
+        self.__university = val
+
 
 class Teacher(Person):
     def __init__(self, name, surname, age, gender, university, faculty, discipline, experience, salary):
         super().__init__(name, surname, age, gender)
-        self.__university = university
-        self.__faculty = faculty
-        self.__discipline = discipline
-        self.__experience = experience
-        self.__salary = salary
+        self.__university = str(university)
+        self.__faculty = str(faculty)
+        self.__discipline = str(discipline)
+        self.__experience = str(experience) + " years"
+        self.__salary = str(Money(salary, "USD"))
+
     def __repr__(self):
-        str = "Teacher: "+super().__repr__()+" "
-        str += "University: " + self.get_university() + "; Faculty: " + self.get_faculty() + "; "
-        str += "Discipline: " + self.get_discipline() + "; Experience: " + self.get_experience() + "; "
-        str += "Salary: " + self.get_salary()
-        return str
+        s = "Teacher: "+super().__repr__()+" "
+        s += "University: " + self.__university + "; Faculty: " + self.__faculty + "; "
+        s += "Discipline: " + self.__discipline + "; Experience: " + self.__experience + "; "
+        s += "Salary: " + self.__salary
+        return s
+
     def get_university(self):
         return self.__university
+
+    def set_university(self, val):
+        self.__university = val
+
     def get_faculty(self):
         return self.__faculty
+
+    def set_faculty(self, val):
+        self.__faculty = val
+
     def get_discipline(self):
         return self.__discipline
+
+    def set_discipline(self, val):
+        self.__discipline = val
+
     def get_experience(self):
-        return str(self.__experience)+" years"
+        return self.__experience
+
+    def set_experience(self, val):
+        self.__experience = val
+
     def get_salary(self):
-        return str(Money(self.__salary, "USD"))
+        return self.__salary
+
+    def set_salary(self, val):
+        self.__salary = val
 
 
 s = Student("John", "Doe", 15, "Male", "UCLA", "Business Management", "Project Coordinator", 178)

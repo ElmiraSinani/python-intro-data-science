@@ -32,4 +32,4 @@ def main():
     print(obj1.conversion("RUB", "AMD"))
     print(obj1.conversion("USD", "AMD"))
     print(obj1.conversion("AMD", "AMD"))
-main()
+#main()

@@ -3,8 +3,9 @@
 
 class Rational:
     def __init__(self, x, y):
-        self.nominator = x
-        self.denominator = y
+        gcd = Rational.gcd(x, y)
+        self.nominator = int(x // gcd)
+        self.denominator = int(y // gcd)
 
     @staticmethod
     def lcm(a, b):
@@ -12,31 +13,30 @@ class Rational:
 
     @staticmethod
     def gcd(a, b):
-        if b==0:
+        if b == 0:
             return a
         else:
-            return Rational.gcd(b, a%b)
+            return Rational.gcd(b, a % b)
 
     def __repr__(self):
-        gcd = Rational.gcd(self.nominator, self.denominator)
-        return '{}/{}'.format(self.nominator, self.denominator)+' = {}/{}'.format(self.nominator/gcd, self.denominator/gcd)
+        return '{}/{}'.format(self.nominator, self.denominator)
 
     def __add__(self, other):
         x = self.lcm(self. denominator, other.denominator)
         y = self.nominator*(x/self.denominator)+other.nominator*(x/other.denominator)
-        return Rational(x,y)
+        return Rational(y, x)
 
     def __sub__(self, other):
         x = self.lcm(self.denominator, other.denominator)
         y = self.nominator * (x / self.denominator) - other.nominator * (x / other.denominator)
-        return Rational(x, y)
+        return Rational(int(y), int(x))
 
     def __mul__(self, other):
         x = self.nominator*other.nominator
         y = self.denominator*other.denominator
         return Rational(x, y)
 
-    def __div__(self, other):
+    def __truediv__(self, other):
         x = self.nominator * other.denominator
         y = self.denominator * other.nominator
         return Rational(x, y)
@@ -67,20 +67,22 @@ class Rational:
         return False
 
     def __pow__(self, power, modulo=None):
-        return Rational(self.numerator ** power, self.denominator ** power)
+        return Rational(self.nominator ** power, self.denominator ** power)
 
 
 
-r1 = Rational(5, 8)
-r2 = Rational(3, 2)
+r1 = Rational(-1, 3)
+r2 = Rational(1, -5)
 
-#print (Rational.gcd(54,24))
-print (r2)
+# print (Rational.gcd(54,24))
+# print (Rational.lcm(54,24))
+
 print ("__add__ ",  r1+r2)
 print ("__eq__ ",  r1==r2)
 print ("__sub__ ",  r1-r2)
 print ("__mul__ ",  r1*r2)
 print ("__dev__ ",  r1/r2)
+print("__pow__ ", pow(r1, 2))
 
 
 

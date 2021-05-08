@@ -30,25 +30,29 @@ class Student(Person):
         return self.__middle_score
 
     def set_score(self, val):
-        self.__middle_score = val
+        if type(self.__middle_score) == int or type(self.__middle_score) == float:
+            self.__middle_score = val
 
     def get_course(self):
         return self.__course
 
     def set_course(self, val):
-        self.__course = val
+        if type(self.__course) == int:
+            self.__course = val
 
     def get_faculty(self):
         return self.__faculty
 
     def set_faculty(self, val):
-        self.__faculty = val
+        if type(self.__faculty) == str:
+            self.__faculty = val
 
     def get_university(self):
         return self.__university
 
     def set_university(self, val):
-        self.__university = val
+        if type(self.__university) == str:
+            self.__university = val
 
 
 class Teacher(Person):
@@ -71,37 +75,41 @@ class Teacher(Person):
         return self.__university
 
     def set_university(self, val):
-        self.__university = val
+        if type(self.__university) == str:
+            self.__university = val
 
     def get_faculty(self):
         return self.__faculty
 
     def set_faculty(self, val):
-        self.__faculty = val
+        if type(self.__faculty) == str:
+            self.__faculty = val
 
     def get_discipline(self):
         return self.__discipline
 
     def set_discipline(self, val):
-        self.__discipline = val
+        if type(self.__discipline) == str:
+            self.__discipline = val
 
     def get_experience(self):
         return self.__experience
 
     def set_experience(self, val):
-        self.__experience = val
+        if type(self.__experience) == int or type(self.__experience) == float:
+            self.__experience = val
 
     def get_salary(self):
         return self.__salary
 
     def set_salary(self, val):
-        self.__salary = val
+        if type(self.__salary) == int or type(self.__salary) == float:
+            self.__salary = val
 
 
 s = Student("John", "Doe", 15, "Male", "UCLA", "Business Management", "Project Coordinator", 178)
 t = Teacher("Mari", "Brown", 48, "Female", "Cambridge", "Natural and applied sciences", "Biology", 15, 200000)
 print(s)
 print(t)
-
 
 

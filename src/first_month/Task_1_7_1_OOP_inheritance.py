@@ -1,12 +1,18 @@
 from Task_1_5_2_OOP_Money_Class import Money
+from CustomExceptions import InvalidInputError
 
 
 class Person:
     def __init__(self, name, surname, age, gender):
         self.__name = name
         self.__surname = surname
-        self.__age = age
         self.__gender = gender
+        self.__age = age
+        try:
+            if age < 0:
+                raise InvalidInputError("Negative Value is not acceptable for aga")
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
     def __repr__(self):
         return self.__name+" "+self.__surname+" - "+self.__gender+", "+str(self.__age)+" years old."

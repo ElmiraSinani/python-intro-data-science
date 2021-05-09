@@ -1,4 +1,6 @@
 import requests
+from CustomExceptions import InvalidInputError
+
 
 class Money:
     api_url = "https://api.exchangerate-api.com/v4/latest/AMD"
@@ -8,22 +10,38 @@ class Money:
     def __init__(self, amount, currency):
         self.amount = amount
         self.currency = currency
+        try:
+            if (amount == int or amount == float) and amount < 0:
+                raise InvalidInputError("Negative Number is not acceptable for amount")
+            if type(amount) != int or type(amount) != float:
+                raise InvalidInputError("Amount must be number")
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
     def __repr__(self):
         return str(self.amount) + " " + str(self.currency)
 
     def __add__(self, obj2):
-        return Money(self.amount+obj2.amount, self.currency)
+        try:
+            return Money(self.amount+obj2.amount, self.currency)
+        except TypeError:
+            print("Type Error")
 
     def __sub__(self, obj2):
-        return Money(self.amount-obj2.amount, self.currency)
+        try:
+            return Money(self.amount-obj2.amount, self.currency)
+        except TypeError:
+            print("Type Error")
 
     def conversion(self, convert_from, convert_to):
-        converted_amount = self.amount/self.rates[convert_from] * self.rates[convert_to]
-        return converted_amount
+        try:
+            converted_amount = self.amount/self.rates[convert_from] * self.rates[convert_to]
+            return converted_amount
+        except TypeError:
+            print("Type Error")
 
 def main():
-    obj1 = Money(150, 'USD')
+    obj1 = Money("-50", 'USD')
     obj2 = Money(50, 'USD')
     print("obj1: ", obj1)
     print("obj2: ", obj2)

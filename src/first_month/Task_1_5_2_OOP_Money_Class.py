@@ -39,7 +39,7 @@ class Money:
 
     def set_amount(self, val):
         try:
-            if type(val) == int and val>0:
+            if type(val) == int and val > 0:
                 self.__amount = val
             else:
                 raise InvalidInputError("Invalid value for amount", val)
@@ -60,7 +60,7 @@ class Money:
 
 
 def main():
-    obj1 = Money("100", 'USD')
+    obj1 = Money(150, 'USD')
     obj2 = Money(50, 'USD')
     print("obj1: ", obj1)
     print("obj2: ", obj2)
@@ -69,4 +69,4 @@ def main():
     print(obj1.conversion("RUB", "AMD"))
     print(obj1.conversion("USD", "AMD"))
     print(obj1.conversion("AMD", "AMD"))
-main()
+#main()

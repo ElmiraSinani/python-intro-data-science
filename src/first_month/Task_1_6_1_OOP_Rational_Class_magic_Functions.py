@@ -6,11 +6,14 @@ from CustomExceptions import InvalidInputError
 class Rational:
     def __init__(self, x, y):
         try:
-            gcd = Rational.gcd(x, y)
-            self.nominator = int(x // gcd)
-            self.denominator = int(y // gcd)
-        except TypeError:
-            print("Type Error")
+            if y == 0:
+                raise InvalidInputError("Y can't be zero", y)
+            else:
+                gcd = Rational.gcd(x, y)
+                self.nominator = int(x // gcd)
+                self.denominator = int(y // gcd)
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
     @staticmethod
     def lcm(a, b):
@@ -27,88 +30,59 @@ class Rational:
         return '{}/{}'.format(self.nominator, self.denominator)
 
     def __add__(self, other):
-        try:
-            x = self.lcm(self. denominator, other.denominator)
-            y = self.nominator*(x/self.denominator)+other.nominator*(x/other.denominator)
-            return Rational(y, x)
-        except AttributeError:
-            print("AttributeError")
+        x = self.lcm(self. denominator, other.denominator)
+        y = self.nominator*(x/self.denominator)+other.nominator*(x/other.denominator)
+        return Rational(y, x)
 
     def __sub__(self, other):
-        try:
-            x = self.lcm(self.denominator, other.denominator)
-            y = self.nominator * (x / self.denominator) - other.nominator * (x / other.denominator)
-            return Rational(int(y), int(x))
-        except AttributeError:
-            print("AttributeError")
+        x = self.lcm(self.denominator, other.denominator)
+        y = self.nominator * (x / self.denominator) - other.nominator * (x / other.denominator)
+        return Rational(int(y), int(x))
 
     def __mul__(self, other):
-        try:
-            x = self.nominator*other.nominator
-            y = self.denominator*other.denominator
-            return Rational(x, y)
-        except AttributeError:
-            print("AttributeError")
+        x = self.nominator*other.nominator
+        y = self.denominator*other.denominator
+        return Rational(x, y)
 
     def __truediv__(self, other):
-        try:
-            x = self.nominator * other.denominator
-            y = self.denominator * other.nominator
-            return Rational(x, y)
-        except AttributeError:
-            print("AttributeError")
+        x = self.nominator * other.denominator
+        y = self.denominator * other.nominator
+        return Rational(x, y)
 
     def __eq__(self, other):
-        try:
-            if self.nominator == other.nominator and self.denominator == other.denominator:
-                return True
-            return False
-        except AttributeError:
-            print("AttributeError")
+        if self.nominator == other.nominator and self.denominator == other.denominator:
+            return True
+        return False
 
     def __gt__(self, other):
-        try:
-            if self.nominator / self.denominator > other.nominator / other.denominator:
-                return True
-            return False
-        except AttributeError:
-            print("AttributeError")
+        if self.nominator / self.denominator > other.nominator / other.denominator:
+            return True
+        return False
 
     def __ge__(self, other):
-        try:
-            if self.nominator / self.denominator >= other.nominator / other.denominator:
-                return True
-            return False
-        except AttributeError:
-            print("AttributeError")
+        if self.nominator / self.denominator >= other.nominator / other.denominator:
+            return True
+        return False
 
     def __lt__(self, other):
-        try:
-            if self.nominator / self.denominator < other.nominator / other.denominator:
-                return True
-            return False
-        except AttributeError:
-            print("AttributeError")
+        if self.nominator / self.denominator < other.nominator / other.denominator:
+            return True
+        return False
 
     def __le__(self, other):
-        try:
-            if self.nominator / self.denominator <= other.nominator / other.denominator:
-                return True
-            return False
-        except AttributeError:
-            print("AttributeError")
+        if self.nominator / self.denominator <= other.nominator / other.denominator:
+            return True
+        return False
 
     def __pow__(self, power, modulo=None):
-        try:
-            return Rational(self.nominator ** power, self.denominator ** power)
-        except AttributeError:
-            print("AttributeError")
+        return Rational(self.nominator ** power, self.denominator ** power)
 
 
 
-r1 = Rational(-1, 5)
+r1 = Rational(-1, 0)
 r2 = Rational(1, -5)
-
+print(r1)
+print(r2)
 # print (Rational.gcd(54,24))
 # print (Rational.lcm(54,24))
 

@@ -4,18 +4,26 @@ from CustomExceptions import InvalidInputError
 
 class Person:
     def __init__(self, name, surname, age, gender):
-        self.__name = name
-        self.__surname = surname
-        self.__gender = gender
-        self.__age = age
         try:
+            if type(age) == str:
+                raise InvalidInputError("Age can't be string")
             if age < 0:
                 raise InvalidInputError("Negative Value is not acceptable for aga")
+            if type(name) != str or type(surname) != str or type(gender) != str:
+                raise InvalidInputError("Name/Surname/Gender must be string")
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
+        else:
+            self.__name = str(name)
+            self.__surname = str(surname)
+            self.__gender = str(gender)
+            self.__age = int(age)
 
     def __repr__(self):
-        return self.__name+" "+self.__surname+" - "+self.__gender+", "+str(self.__age)+" years old."
+        try:
+            return self.__name + " " + self.__surname + " - " + self.__gender + ", " + str(self.__age) + " years old."
+        except AttributeError:
+            print("Type Error")
 
 
 class Student(Person):
@@ -27,38 +35,62 @@ class Student(Person):
         self.__middle_score = str(middle_score)
 
     def __repr__(self):
-        s = "Student: " + super().__repr__()
-        s += " University: "+self.__university+"; Faculty: "+self.__faculty+"; "
-        s += "Course: "+self.__course+"; Mid Score: "+self.__middle_score
-        return s
+        val = ""
+        try:
+            val = "Student: " + super().__repr__()
+            val += " University: " + self.__university + "; Faculty: " + self.__faculty + "; "
+            val += "Course: " + self.__course + "; Mid Score: " + self.__middle_score
+        except TypeError:
+            print("Type Error")
+        return val
 
     def get_score(self):
         return self.__middle_score
 
     def set_score(self, val):
-        if type(self.__middle_score) == int or type(self.__middle_score) == float:
-            self.__middle_score = val
+        try:
+            if type(self.__middle_score) == int or type(self.__middle_score) == float:
+                self.__middle_score = val
+            else:
+                raise InvalidInputError("Invalid input")
+        except InvalidInputError:
+            print("Score value must be number")
 
     def get_course(self):
         return self.__course
 
     def set_course(self, val):
-        if type(self.__course) == int:
-            self.__course = val
+        try:
+            if type(self.__course) == int:
+                self.__course = val
+            else:
+                raise InvalidInputError("Invalid input")
+        except InvalidInputError:
+            print("Course value must be number")
 
     def get_faculty(self):
         return self.__faculty
 
     def set_faculty(self, val):
-        if type(self.__faculty) == str:
-            self.__faculty = val
+        try:
+            if type(self.__faculty) == str:
+                self.__faculty = val
+            else:
+                raise InvalidInputError("Invalid input")
+        except InvalidInputError:
+            print("Faculty value must be string")
 
     def get_university(self):
         return self.__university
 
     def set_university(self, val):
-        if type(self.__university) == str:
-            self.__university = val
+        try:
+            if type(self.__university) == str:
+                self.__university = val
+            else:
+                raise InvalidInputError("Invalid input")
+        except InvalidInputError:
+            print("University value must be string")
 
 
 class Teacher(Person):
@@ -68,13 +100,13 @@ class Teacher(Person):
         self.__faculty = str(faculty)
         self.__discipline = str(discipline)
         self.__experience = str(experience) + " years"
-        self.__salary = str(Money(salary, "USD"))
+        self.__salary = Money(salary, "USD")
 
     def __repr__(self):
-        s = "Teacher: "+super().__repr__()+" "
+        s = "Teacher: " + super().__repr__() + " "
         s += "University: " + self.__university + "; Faculty: " + self.__faculty + "; "
         s += "Discipline: " + self.__discipline + "; Experience: " + self.__experience + "; "
-        s += "Salary: " + self.__salary
+        s += "Salary: " + str(self.__salary)
         return s
 
     def get_university(self):
@@ -112,10 +144,8 @@ class Teacher(Person):
         if type(self.__salary) == int or type(self.__salary) == float:
             self.__salary = val
 
-
-s = Student("John", "Doe", 15, "Male", "UCLA", "Business Management", "Project Coordinator", 178)
+# s = Student("John", 12, 15, "Male", "UCLA", "Business Management", "Project Coordinator", 178)
+#print(s)
 t = Teacher("Mari", "Brown", 48, "Female", "Cambridge", "Natural and applied sciences", "Biology", 15, 200000)
-print(s)
+
 print(t)
-
-

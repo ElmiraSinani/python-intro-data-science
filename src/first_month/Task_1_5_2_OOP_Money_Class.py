@@ -12,9 +12,9 @@ class Money:
         self.currency = currency
         try:
             if (amount == int or amount == float) and amount < 0:
-                raise InvalidInputError("Negative Number is not acceptable for amount")
+                raise InvalidInputError("Negative Number is not acceptable for amount", amount)
             if type(amount) != int or type(amount) != float:
-                raise InvalidInputError("Amount must be number")
+                raise InvalidInputError("Amount must be number", amount)
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
 

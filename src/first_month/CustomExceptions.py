@@ -4,4 +4,4 @@ class InvalidInputError(Exception):
         self.val = val
 
     def __repr__(self):
-        return repr(self.msg)
+        print(self.msg, ": ", str(self.val))

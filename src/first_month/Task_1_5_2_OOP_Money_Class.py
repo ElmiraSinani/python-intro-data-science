@@ -11,16 +11,16 @@ class Money:
         try:
             if (amount == int or amount == float) and amount < 0:
                 raise InvalidInputError("Negative Number is not acceptable for amount", amount)
-            if type(amount) != int or type(amount) != float:
+            elif type(amount) != int or type(amount) != float:
                 raise InvalidInputError("Amount must be number", amount)
+            else:
+                self.__amount = amount
+                self.__currency = currency
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
-        else:
-            self.__amount = amount
-            self.__currency = currency
 
     def __repr__(self):
-        return str(self.amount) + " " + str(self.currency)
+       return str(self.amount) + " " + str(self.currency)
 
     def __add__(self, obj2):
         return Money(self.amount+obj2.amount, self.currency)
@@ -58,7 +58,7 @@ class Money:
 
 
 def main():
-    obj1 = Money("-50", 'USD')
+    obj1 = Money(100, 'USD')
     obj2 = Money(50, 'USD')
     print("obj1: ", obj1)
     print("obj2: ", obj2)
@@ -67,4 +67,4 @@ def main():
     print(obj1.conversion("RUB", "AMD"))
     print(obj1.conversion("USD", "AMD"))
     print(obj1.conversion("AMD", "AMD"))
-#main()
+main()

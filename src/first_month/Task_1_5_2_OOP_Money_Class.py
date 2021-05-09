@@ -16,30 +16,46 @@ class Money:
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
         else:
-            self.amount = amount
-            self.currency = currency
+            self.__amount = amount
+            self.__currency = currency
 
     def __repr__(self):
         return str(self.amount) + " " + str(self.currency)
 
     def __add__(self, obj2):
-        try:
-            return Money(self.amount+obj2.amount, self.currency)
-        except TypeError:
-            print("Type Error")
+        return Money(self.amount+obj2.amount, self.currency)
 
     def __sub__(self, obj2):
-        try:
-            return Money(self.amount-obj2.amount, self.currency)
-        except TypeError:
-            print("Type Error")
+        return Money(self.amount-obj2.amount, self.currency)
 
     def conversion(self, convert_from, convert_to):
+        converted_amount = self.amount/self.rates[convert_from] * self.rates[convert_to]
+        return converted_amount
+
+    def get_amount(self):
+        return self.__amount
+
+    def set_amount(self, val):
         try:
-            converted_amount = self.amount/self.rates[convert_from] * self.rates[convert_to]
-            return converted_amount
-        except TypeError:
-            print("Type Error")
+            if type(val) == int and val>0:
+                self.__amount = val
+            else:
+                raise InvalidInputError("Invalid value for amount", val)
+        except InvalidInputError:
+            print("Amount must be positive number")
+
+    def get_currency(self):
+        return self.__currency
+
+    def set_currency(self, val):
+        try:
+            if type(val) == str:
+                self.__currency = val
+            else:
+                raise InvalidInputError("Invalid value for currency", val)
+        except InvalidInputError:
+            print("currency must be string")
+
 
 def main():
     obj1 = Money("-50", 'USD')

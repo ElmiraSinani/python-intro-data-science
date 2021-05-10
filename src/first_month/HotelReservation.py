@@ -17,12 +17,6 @@ class Room:
     def __repr__(self):
         return "Room Type: {}, Count: {}".format(self.__room_type, self.__room_count)
 
-    def reserve(self):
-        pass
-
-    def checkout(self):
-        pass
-
     def get_room_type(self):
         return self.__room_type
 
@@ -46,6 +40,13 @@ class Room:
                 raise InvalidInputError("You can set only integer value as a Room count", v)
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
+
+
+    def reserve(self):
+        pass
+
+    def checkout(self):
+        pass
 
 
 class Hotel():

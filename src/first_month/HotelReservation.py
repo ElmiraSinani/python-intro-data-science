@@ -46,3 +46,36 @@ class Room:
                 raise InvalidInputError("You can set only integer value as a Room count", v)
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
+
+
+class Hotel(Room):
+    def __init__(self, rating, rater_count, rooms):
+        try:
+            if type(rating) != int or type(rating) != float:
+                raise InvalidInputError("Rating must me number")
+            elif type(rater_count) != int:
+                raise InvalidInputError("rater_count must be Integer")
+            else:
+                self.__rating = rating
+                self.__rater_count = rater_count
+                self.__rooms = rooms
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
+
+    def __repr__(self):
+        return "Rating: {}, Count: {}".format(self.__rating, self.__rater_count)
+
+    def get_rating(self):
+        return self.__rating
+
+    def get_rooms(self):
+        return self.__rooms
+
+    def reserve(self):
+        pass
+
+    def checkout(self):
+        pass
+
+    def rate(self):
+        pass

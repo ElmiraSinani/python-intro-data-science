@@ -48,7 +48,7 @@ class Room:
             print("CustomValueError Exception!", e)
 
 
-class Hotel(Room):
+class Hotel():
     def __init__(self, rating, rater_count, rooms):
         try:
             if type(rating) != int or type(rating) != float:

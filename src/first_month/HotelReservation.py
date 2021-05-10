@@ -41,7 +41,6 @@ class Room:
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
 
-
     def reserve(self):
         pass
 

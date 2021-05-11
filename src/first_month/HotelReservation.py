@@ -93,12 +93,15 @@ class Hotel:
         Room.checkout(room_obj)
         self.__rooms[room_id]['count'] = self.__rooms[room_id]['count'] + 1
 
-    def rate(self):
-        pass
+    def rate(self, new_rating):
+        self.__rater_count = self.__rater_count + 1
+        self.__rating = (new_rating + self.__rating)/self.__rater_count
+
+    @staticmethod
+    def create_room_id(hotel_rooms):
+        return sorted(hotel_rooms.keys())[-1] + 1
 
 
-def create_room_id(hotel_rooms):
-    return sorted(hotel_rooms.keys())[-1] + 1
 
 
 r1 = Room('KING DELUXE BEDROOM', 700, 7)
@@ -120,6 +123,7 @@ print(h)
 # h.delete_room(1)
 # print(h)
 
+h.rate(5)
 
 h.reserve(1, r1, 5)
 print(h)

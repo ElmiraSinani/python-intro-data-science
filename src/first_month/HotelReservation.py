@@ -1,5 +1,3 @@
-import json
-
 from CustomExceptions import InvalidInputError
 
 
@@ -45,11 +43,11 @@ class Room:
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
 
-    def reserve(self):
-        pass
+    def reserve(self, count):
+        self.__room_count = self.__room_count - count
 
     def checkout(self):
-        pass
+        self.__room_count = self.__room_count - 1
 
 
 class Hotel:
@@ -66,14 +64,11 @@ class Hotel:
                 self.__rating = rating
                 self.__rater_count = rater_count
                 self.__rooms = rooms
-
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
 
     def __repr__(self):
         return "{} - Rating: {}, From Raters Count: {}, Rooms: {}".format(self.__name, self.__rating, self.__rater_count, self.__rooms)
-
-
 
     def get_name(self):
         return self.__name
@@ -84,54 +79,50 @@ class Hotel:
     def get_rooms(self):
         return self.__rooms
 
-    def reserve(self, room_id, count):
-        self.__rooms[room_id]['count'] = self.__rooms[room_id]['count'] - count
-
-    def checkout(self, room_obj):
-        pass
-        #self.__rooms[room_id]['count'] = self.__rooms[room_id]['count'] - count
-
-    def rate(self):
-        pass
-
     def add_room(self, room_id, new_room_obj):
         self.__rooms[room_id] = {new_room_obj}
 
     def delete_room(self, room_id):
         self.__rooms.pop(room_id)
 
+    def reserve(self, room_id, room_obj, count):
+        Room.reserve(room_obj, count)
+        self.__rooms[room_id] = dict(room_obj)
+
+    def checkout(self, room_id, room_obj):
+        Room.checkout(room_obj)
+        self.__rooms[room_id]['count'] = self.__rooms[room_id]['count'] + 1
+
+    def rate(self):
+        pass
+
+
 def create_room_id(hotel_rooms):
     return sorted(hotel_rooms.keys())[-1] + 1
 
-hotel_rooms = {
-                1: dict(Room('KING DELUXE BEDROOM', 700, 7)),
-                2: dict(Room('QUEEN DUPLEX BEDROOM', 800, 8)),
-                3: dict(Room('CONTERMINOUS FAMILY SUITE', 1000, 10)),
-                4: dict(Room('GRAND TWIN PREMIER SUITE', 900, 9)),
-                5: dict(Room('TWOFOLD PENTHOUSE', 600, 6)),
-                6: dict(Room('LUXURIOUS POSH CABANA', 1300, 13)),
-                7: dict(Room('HEDONISTIC SPACIOUS LANAI', 650, 12))
-            }
 
-roomObj = dict(Room("KING DELUXE BEDROOM", 700, 7))
-
-# print("Room type: ", type(roomObj))
-# print("Room obj: ", roomObj['count'])
-# print("Room obj len(): ", len(roomObj))
-#
-# roomSet = {'type': 'KING DELUXE BEDROOM', 'count': 7}
-# print("Room set len(): ",len(roomSet))
-
-
+r1 = Room('KING DELUXE BEDROOM', 700, 7)
+r2 = Room('QUEEN DUPLEX BEDROOM', 800, 8)
+r3 = Room('CONTERMINOUS FAMILY SUITE', 1000, 10)
+r4 = Room('GRAND TWIN PREMIER SUITE', 900, 9)
+r5 = Room('TWOFOLD PENTHOUSE', 600, 6)
+r6 = Room('LUXURIOUS POSH CABANA', 1300, 13)
+r7 = Room('HEDONISTIC SPACIOUS LANAI', 650, 12)
+r8 = Room('Single', 800, 10)
+hotel_rooms = {1: dict(r1), 2: dict(r2), 3: dict(r3), 4: dict(r4), 5: dict(r5), 6: dict(r6), 7: dict(r7)}
 
 h = Hotel("Hilton Garden Inn", 4, 250, hotel_rooms)
 print(h)
+#
+# h.add_room(create_room_id(hotel_rooms), r8)
+# print(h)
+#
+# h.delete_room(1)
+# print(h)
 
-h.add_room(create_room_id(hotel_rooms), Room('Single', 800, 10))
+
+h.reserve(1, r1, 5)
 print(h)
 
-h.delete_room(1)
-print(h)
-
-h.reserve(2, 5)
+h.checkout(1, r1)
 print(h)

@@ -95,7 +95,7 @@ class Hotel:
 
     def rate(self, new_rating):
         self.__rater_count = self.__rater_count + 1
-        self.__rating = (new_rating + self.__rating)/self.__rater_count
+        self.__rating = self.__rating + ((new_rating + self.__rating)/self.__rater_count)
 
     @staticmethod
     def create_room_id(hotel_rooms):

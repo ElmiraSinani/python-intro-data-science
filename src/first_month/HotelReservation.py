@@ -144,7 +144,7 @@ class Hotel:
         try:
             if type(new_rating) != int:
                 raise InvalidInputError("Rating must be integer", new_rating)
-            elif new_rating <= 0:
+            elif 1 > new_rating > 5:
                 raise InvalidInputError("Rating must be >0 integer", new_rating)
             else:
                 self.__rater_count = self.__rater_count + 1

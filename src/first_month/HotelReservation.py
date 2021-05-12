@@ -44,31 +44,42 @@ class Room:
             print("CustomValueError Exception!", e)
 
     def reserve(self, count):
-        self.__room_count = self.__room_count - count
+        try:
+            if type(count) != int:
+                raise InvalidInputError("Room count must be integer", count)
+            elif count < 1:
+                raise InvalidInputError("Room count must be >0 integer", count)
+            else:
+                self.__room_count = self.__room_count - count
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
     def checkout(self):
-        self.__room_count = self.__room_count - 1
+        try:
+            if self.__room_count >= 1:
+                self.__room_count = self.__room_count - 1
+            else:
+                raise InvalidInputError("Room count must be >=1 integer", self.__room_count)
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
 
 class Hotel:
-    def __init__(self, name, rating, rater_count, rooms):
+    def __init__(self, name, rooms):
         try:
-            if type(rating) != int:
-                raise InvalidInputError("Rating must me number", rating)
-            elif type(rater_count) != int:
-                raise InvalidInputError("rater_count must be Integer", rater_count)
-            elif type(name) != str:
+            if type(name) != str:
                 raise InvalidInputError("Hotel name must be string", name)
             else:
+                self.__rating = 0
+                self.__rater_count = 0
+                self.__rating_sum = 0
                 self.__name = name
-                self.__rating = rating
-                self.__rater_count = rater_count
                 self.__rooms = rooms
         except InvalidInputError as e:
             print("CustomValueError Exception!", e)
 
     def __repr__(self):
-        return "{} - Rating: {}, From Raters Count: {}, Rooms: {}".format(self.__name, self.__rating, self.__rater_count, self.__rooms)
+        return "{} - Rating: {}, From {} raters, Rooms: {}".format(self.__name, self.__rating, self.__rater_count, self.__rooms)
 
     def get_name(self):
         return self.__name
@@ -80,28 +91,71 @@ class Hotel:
         return self.__rooms
 
     def add_room(self, room_id, new_room_obj):
-        self.__rooms[room_id] = {new_room_obj}
+        try:
+            if room_id > 0 and type(room_id) == int:
+                self.__rooms[room_id] = {new_room_obj}
+            else:
+                raise InvalidInputError("Room ID must be integer > 0", room_id)
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
     def delete_room(self, room_id):
-        self.__rooms.pop(room_id)
+        try:
+            if room_id > 0 and type(room_id) == int:
+                self.__rooms.pop(room_id)
+            else:
+                raise InvalidInputError("Room ID must be integer > 0", room_id)
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
     def reserve(self, room_id, room_obj, count):
-        Room.reserve(room_obj, count)
-        self.__rooms[room_id] = dict(room_obj)
+        try:
+            if type(room_id) != int:
+                raise InvalidInputError("Room ID must be integer", room_id)
+            elif room_id < 1:
+                raise InvalidInputError("Room ID must be >0 integer", room_id)
+            if type(count) != int:
+                raise InvalidInputError("Room count must be integer", count)
+            elif count < 1:
+                raise InvalidInputError("Room count must be >0 integer", count)
+            elif type(room_obj) != Room:
+                raise InvalidInputError("Room Type must be Room", room_obj)
+            else:
+                Room.reserve(room_obj, count)
+                self.__rooms[room_id] = dict(room_obj)
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
     def checkout(self, room_id, room_obj):
-        Room.checkout(room_obj)
-        self.__rooms[room_id]['count'] = self.__rooms[room_id]['count'] + 1
+        try:
+            if type(room_id) != int:
+                raise InvalidInputError("Room ID must be integer", room_id)
+            elif room_id < 1:
+                raise InvalidInputError("Room ID must be >0 integer", room_id)
+            elif type(room_obj) != Room:
+                raise InvalidInputError("Room Type must be Room", room_obj)
+            else:
+                Room.checkout(room_obj)
+                self.__rooms[room_id]['count'] = self.__rooms[room_id]['count'] + 1
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
     def rate(self, new_rating):
-        self.__rater_count = self.__rater_count + 1
-        self.__rating = self.__rating + ((new_rating + self.__rating)/self.__rater_count)
+        try:
+            if type(new_rating) != int:
+                raise InvalidInputError("Rating must be integer", new_rating)
+            elif new_rating <= 0:
+                raise InvalidInputError("Rating must be >0 integer", new_rating)
+            else:
+                self.__rater_count = self.__rater_count + 1
+                self.__rating_sum = self.__rating_sum + new_rating
+                self.__rating = self.__rating_sum / self.__rater_count
+        except InvalidInputError as e:
+            print("CustomValueError Exception!", e)
 
     @staticmethod
-    def create_room_id(hotel_rooms):
-        return sorted(hotel_rooms.keys())[-1] + 1
-
-
+    def create_room_id(rooms):
+        return sorted(rooms.keys())[-1] + 1
 
 
 r1 = Room('KING DELUXE BEDROOM', 700, 7)
@@ -114,15 +168,21 @@ r7 = Room('HEDONISTIC SPACIOUS LANAI', 650, 12)
 r8 = Room('Single', 800, 10)
 hotel_rooms = {1: dict(r1), 2: dict(r2), 3: dict(r3), 4: dict(r4), 5: dict(r5), 6: dict(r6), 7: dict(r7)}
 
-h = Hotel("Hilton Garden Inn", 4, 250, hotel_rooms)
+h = Hotel("Hilton Garden Inn", hotel_rooms)
 print(h)
-#
-# h.add_room(create_room_id(hotel_rooms), r8)
-# print(h)
-#
-# h.delete_room(1)
-# print(h)
 
+h.add_room(h.create_room_id(hotel_rooms), r8)
+print(h)
+
+h.delete_room(2)
+print(h)
+
+h.rate(5)
+h.rate(4)
+h.rate(3)
+h.rate(5)
+h.rate(3)
+h.rate(3)
 h.rate(5)
 
 h.reserve(1, r1, 5)

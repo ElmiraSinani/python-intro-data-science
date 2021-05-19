@@ -12,3 +12,5 @@
 ###### 1.4.2 Sets and Dictionaries
 ###### 1.5.2 OOP: Money class
 ###### 1.6.1 OOP: Rational Class Magic Functions
+###### 1.7.1 OOP: Inheritance
+###### Project 1: Hotel Reservation

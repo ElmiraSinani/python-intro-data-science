@@ -18,10 +18,11 @@ np_arr3[5:8] = 11
 print("#3: ", np_arr3)
 
 # 4. Write a NumPy program to test whether each element of a 1-D array is also present in a second array.
-arr_first = np.array([1, 2, 3])
-arr_second = np.array([5, 2, 3, 4, 5, 4, 3])
+arr_first = np.array([1, 2, 8])
+arr_second = np.array([1, 2, 3, 4, 5, 4, 3])
 print("# 4: ", np.in1d(arr_first, arr_second))
 
+# res = 2 == arr_first
 # #4 - using loop
 for i in arr_first:
     if i in arr_second:

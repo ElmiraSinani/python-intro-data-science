@@ -16,4 +16,5 @@
 ###### Project 1: Hotel Reservation
 
 ## Second month - Data Engineering
-###### Task 2.1.1 Ndarray
+###### Task 2.1.1 NumPy: Ndarray
+###### Task 2.2.1 NumPy: Linner Algebra functions

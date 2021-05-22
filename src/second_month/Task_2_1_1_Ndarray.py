@@ -14,8 +14,7 @@ print("#2: ", np_arr2)
 
 # 3. Write a NumPy program to create a null vector of size 10 and update sixth to eight values to 11.
 np_arr3 = np.zeros(10)
-np_arr3[5] = 11
-np_arr3[7] = 11
+np_arr3[5:8] = 11
 print("#3: ", np_arr3)
 
 # 4. Write a NumPy program to test whether each element of a 1-D array is also present in a second array.

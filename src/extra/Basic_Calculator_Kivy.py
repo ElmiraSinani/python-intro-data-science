@@ -77,7 +77,7 @@ class BasicCalculator(App):
         button_grid.children[0].bind(on_press=evaluate_result)
 
         def clear_label(instance):
-            output_label.text = " "
+            output_label.text = ""
 
         clear_button = Button(text='Clear', size_hint_y=None, height=60)
         clear_button.bind(on_press=clear_label)

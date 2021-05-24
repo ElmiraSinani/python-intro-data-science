@@ -6,6 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.core.window import Window
+
 Window.size = (400, 600)
 
 
@@ -51,20 +52,21 @@ class BasicCalculator(App):
             if instance.text == 'x':
                 output_label.text += '*'
             elif instance.text == '1/x':
-                output_label.text = str(1/int(output_label.text))
+                output_label.text = str(1 / int(output_label.text))
             elif instance.text == 'x*x':
-                output_label.text = str(int(output_label.text)**2)
+                output_label.text = str(int(output_label.text) ** 2)
             elif instance.text == 'sqrt(x)':
                 output_label.text = str(math.sqrt(int(output_label.text)))
             elif instance.text == '+/-':
                 if output_label.text != '' and int(output_label.text) > 0:
-                    output_label.text = "-"+str(int(output_label.text))
+                    output_label.text = "-" + str(int(output_label.text))
                 elif output_label.text == '':
                     output_label.text = "-"
                 else:
                     output_label.text = str(math.fabs(int(output_label.text)))
             else:
                 output_label.text += instance.text
+
         for button in button_grid.children[1:]:
             button.bind(on_press=print_button_text)
 

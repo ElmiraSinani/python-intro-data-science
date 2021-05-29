@@ -37,9 +37,8 @@ def main():
     print("#3: ", get_median(n_arr))
     print("#4: \n", mul_one_and_two_d_arr(n_one_d, n_arr))
 
-    a1 = n_one_d[:, newaxis]
-    print(a1)
-
+    #a1 = n_one_d[:, newaxis]
+    #print(a1)
     # ten = np.arange(1, 11)
     # print(ten)
     # ten_reshaped = ten.reshape((10, 1))

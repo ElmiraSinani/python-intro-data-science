@@ -24,18 +24,21 @@ def get_median(n_arr):
 
 
 # 4. Ստեղծել միաչափ և երկչափ NumPy զանգվածներ և բազմապատկել իրար։
-def mul_one_and_two_d_arr(n_one_d, n_two_d):
-    return n_one_d*n_two_d
+def mul_one_and_two_d_arr():
+    a = np.array([[5, 1, 3],
+                  [1, 1, 1],
+                  [1, 2, 1]])
+    b = np.array([1, 2, 3])
+    return a.dot(b)
 
 
 def main():
     n_arr = np.arange(12).reshape((3, 4))
-    n_one_d = np.array([2, 3, 5, 1])
     print(n_arr)
     print("#1: ", max_and_min(n_arr))
     print("#2: ", max_and_min_by_second_col(n_arr))
     print("#3: ", get_median(n_arr))
-    print("#4: \n", mul_one_and_two_d_arr(n_one_d, n_arr))
+    print("#4: \n", mul_one_and_two_d_arr())
 
     #a1 = n_one_d[:, newaxis]
     #print(a1)

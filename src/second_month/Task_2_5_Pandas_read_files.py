@@ -27,7 +27,7 @@ def select_distinct_dep_ids(file):
 
 # 5. Write a Pandas program to display the first, last name, salary and department number for those employees
 # whose first name starts with the letter 'S'.
-def filter_emp_data(file, start_with_letter):
+def first_name_starts_with(file, start_with_letter):
     df = pd.read_csv(file, usecols=['FirstName', 'LastName', 'Salary', 'DepartmentID'])
     return df[df.FirstName.str.startswith(start_with_letter)]
 
@@ -46,7 +46,7 @@ def main():
     print("#4. distinct department ids: \n", select_distinct_dep_ids("files/employees.csv"))
 
     # 5
-    print("# 5 \n", filter_emp_data("files/employees.csv", 'A'))
+    print("# 5 \n", first_name_starts_with("files/employees.csv", 'A'))
 
 
 main()

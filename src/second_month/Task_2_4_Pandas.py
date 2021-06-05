@@ -16,8 +16,7 @@ def convert_dic_to_series(d):
 
 # 3. Write a Pandas program to convert a NumPy array to a Pandas series
 def convert_np_arr_to_series(np_arr):
-    obj = pd.Series(np_arr)
-    return obj
+    return pd.Series(np_arr)
 
 
 # 4. Write a Pandas program to convert the first column of a DataFrame as a Series
@@ -31,15 +30,15 @@ def sort_series(s):
 
 
 # 6 Write a Pandas program to select the rows the score is between 15 and 20 (inclusive)
-def select_rows_score(exam_data):
+def select_rows_between(exam_data, position, between_from, between_to):
     df = pd.DataFrame(exam_data)
-    return df[df.iloc[:, 1].between(15, 20)]
+    return df[df.iloc[:, position].between(between_from, between_to)]
 
 
 # 7 Write a Pandas program to calculate the sum of the examination attempts by the students.
-def sum_examination_attempts(exam_data):
+def sum_examination_attempts(exam_data, position):
     df = pd.DataFrame(exam_data)
-    return df.iloc[:, 2].sum()
+    return df.iloc[:, position].sum()
 
 
 def main():
@@ -75,10 +74,10 @@ def main():
         'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
         'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']
     }
-    print("# 6 Score between 15 and 20\n", select_rows_score(exam_data))
+    print("# 6 Score between 15 and 20\n", select_rows_between(exam_data, 1, 15, 20))
 
     # 7
-    print("# 7 sum of the examination attempts\n", sum_examination_attempts(exam_data))
+    print("# 7 sum of the examination attempts\n", sum_examination_attempts(exam_data, 2))
 
 
 main()

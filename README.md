@@ -18,3 +18,6 @@
 ## Second month - Data Engineering
 ###### Task 2.1.1 NumPy: Ndarray
 ###### Task 2.2.1 NumPy: Linner Algebra functions
+###### Task 2.3 NumPy: Broadcasting
+###### Task 2.4 Pandas: Series and Dataframes. Sorting and filtering
+

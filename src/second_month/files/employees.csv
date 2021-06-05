@@ -1,0 +1,10 @@
+LastName,FirstName,DepartmentID,Department,Manager,Salary
+Hood,Robin,1,IT,Friar Tuck,200
+Wenger,Arsene,4,Bar,Friar Tuck,50
+Tuck,Friar,3,Foo,Robin Hood,100
+John,Little,3,Foo,Robin Hood,100
+Allardyce,Sam,2,Economy,Friar Tuck,250
+Berbatova,Dimi,3,Foo,Little John,50
+Doe,Joe,1,IT,Little John,200
+Smith,Ann,4,Bar,Friar Tuck,50
+Black,Julia,3,Foo,Robin Hood,100

@@ -2,13 +2,14 @@
 import pandas as pd
 
 f = open('files/data.csv', 'r')
+lines = f.readlines()
 
-while True:
-    line = f.readline()
+for i in range(0, len(lines)):
+    line = lines[i]
     line = line.replace('"', '')
     line = line.replace(',', '')
     line = line.replace('\t', '')
-
+    print(line)
     if line.strip() == '' or line.strip()[0] == '+':
         continue
 
@@ -37,9 +38,6 @@ while True:
 
     df = pd.DataFrame(dic)
     df.to_csv(file_name, mode='a', header=False)
-
-    if not line:
-        break
 
 f.close()
 

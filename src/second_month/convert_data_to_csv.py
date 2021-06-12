@@ -9,7 +9,6 @@ for i in range(0, len(lines)):
     line = line.replace('"', '')
     line = line.replace(',', '')
     line = line.replace('\t', '')
-    print(line)
     if line.strip() == '' or line.strip()[0] == '+':
         continue
 

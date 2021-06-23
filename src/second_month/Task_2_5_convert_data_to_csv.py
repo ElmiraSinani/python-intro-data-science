@@ -39,5 +39,3 @@ for i in range(0, len(lines)):
     df.to_csv(file_name, mode='a', header=False)
 
 f.close()
-
-

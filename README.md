@@ -20,4 +20,7 @@
 ###### Task 2.2.1 NumPy: Linner Algebra functions
 ###### Task 2.3 NumPy: Broadcasting
 ###### Task 2.4 Pandas: Series and Dataframes. Sorting and filtering
-
+###### Task 2.5 Pandas: Working With Files. Filter and convert data to csv
+###### Task 2.6 Pandas: Working With Data. parsing data and data aggregation
+###### Task 2.7 MatPlotLib
+###### Task 2.9 TimeSeries

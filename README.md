@@ -24,3 +24,9 @@
 ###### Task 2.6 Pandas: Working With Data. parsing data and data aggregation
 ###### Task 2.7 MatPlotLib
 ###### Task 2.9 TimeSeries
+
+## Extra
+###### Basic Calculator app with Kivy library
+###### Guess the number
+###### Rock Paper Scissors 
+###### Wording Representation of Number

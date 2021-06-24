@@ -62,8 +62,8 @@ def get_date_range_with_start_n_period(start_date, period):
 
 
 # 5 Write a Pandas program to create a time series using three months frequency.
-def get_data_with_frequency(start_date, frequency):
-    return pd.date_range(start_date, '2000-12-01', freq=frequency)
+def get_data_with_frequency(start_date, per, frequency):
+    return pd.date_range(start_date, periods=per, freq=frequency)
 
 
 def main():
@@ -101,7 +101,7 @@ def main():
     print("#4 \n", get_date_range_with_start_n_period('2012-04-01', 10))
 
     # 5
-    print("#5 \n", get_data_with_frequency('2021-01-01', '3M'), "\n")
+    print("#5 \n", get_data_with_frequency('2021-01-01', 20, '3M'), "\n")
 
     # a = datetime(2017, 11, 28, 23, 55, 59, 342380)
     # print("year =", a.year)
